@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class ="flexcontainer">
+        <div><h1>CORO</h1></div>
+        <div>    <span class="imgcontainer">
+            <img src="img_avatar2.png" alt="Avatar" class="avatar">
+            </span>
+        </div>
+        <div><h1>NAVIRUS</h1></div>
+    </div>
+    
+
+    <div class="totallist">
+        <div class = "cases">
+            <span class="ind-mp_num0"><span class="text">NA</span>
+                <span class="data-up0">NA</span>
+            </span>
+            <span class="ind-mp_txt0">Cases</span>
+
+        </div>
+        <div class = "active">
+            <span class="ind-mp_num1"><span class="text">NA</span>
+                <span class="data-up1">NA</span>
+            </span>
+            <span class="ind-mp_txt1">Active</span>
+
+        </div>
+        <div class = "recovered">
+            <span class="ind-mp_num2"><span class="text">NA</span>
+                <span class="data-up2">NA</span>
+            </span>
+            <span class="ind-mp_txt2">Recovered</span>
+
+        </div>
+        <div class = "deaths">
+            <span class="ind-mp_num3"><span class="text">NA</span>
+                <span class="data-up3">NA</span>
+            </span>
+            <span class="ind-mp_txt3">Deaths</span>
+
+        </div>
+    </div>
+    <h4>Source: www.mygov.in/corona-data</h4>
+    <style>.heart{color:#e25555;}</style>
+<h3>Made for <span class="heart">❤</span></h3>
+</body>
+<script>
+    const api_url = 'https://cors-anywhere.herokuapp.com/https://covid-19india-api.herokuapp.com/v2.0/country_data';
+    async function getReport() {
+        const response = await fetch(api_url);
+        const raw_data = await response.json();
+        const data = raw_data[1];
+        console.log(data);
+        const confirm = data.confirmed_cases;
+        const active = data.active_cases;
+        const recovered = data.recovered_cases;
+        const deaths = data.death_cases;
+        const delta_active = data.delta_change_active_cases;
+        const delta_recovered = data.delta_change_recovered_cases;
+        const delta_deaths = data.delta_change_death_cases;
+        const delta_increase = delta_active+delta_recovered+delta_deaths;
+
+        document.getElementsByClassName("text")[0].innerHTML = confirm;
+        document.getElementsByClassName("data-up0")[0].innerHTML = delta_active+delta_recovered+delta_deaths;
+
+        document.getElementsByClassName("text")[1].innerHTML = active;
+        document.getElementsByClassName("data-up1")[0].innerHTML = delta_active;
+
+        document.getElementsByClassName("text")[2].innerHTML = recovered;
+        document.getElementsByClassName("data-up2")[0].innerHTML = delta_recovered;
+
+        document.getElementsByClassName("text")[3].innerHTML = deaths;
+        document.getElementsByClassName("data-up3")[0].innerHTML = delta_deaths; 
+    }
+    
+    getReport();
+
+</script>
+</html>
