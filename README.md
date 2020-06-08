@@ -5,4 +5,5 @@ api used: https://covid-19india-api.herokuapp.com/v2.0/country_data
 
 Screenshot:
 
-![image](https://user-images.githubusercontent.com/25239178/84001957-45804480-a985-11ea-893e-5ee3559e8ea8.png)
+![Annotation 2020-06-08 125824](https://user-images.githubusercontent.com/25239178/84004073-a4938880-a988-11ea-9687-92d5e73022ba.png)
+
